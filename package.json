@@ -1,0 +1,22 @@
+{
+  "name": "violert_hpd",
+  "version": "1.0.0",
+  "description": "HPD scraping module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergeyUni/violert_HPD.git"
+  },
+  "keywords": [
+    "violert"
+  ],
+  "author": "doctordeepblue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SergeyUni/violert_HPD/issues"
+  },
+  "homepage": "https://github.com/SergeyUni/violert_HPD#readme"
+}
