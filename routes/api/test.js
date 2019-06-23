@@ -8,10 +8,11 @@ const getApplicationPage = require('../../scrapy/test');
  */
 testRoutes.route('/').get(function(req, res) {
     console.log('req body', req.query);
+    
     let {city} = req.query;
     getApplicationPage(city)
         .then(data => {
-            res.json({data});
+            res.json({data:data, query: req.query});
         })
         .catch(error => {
             res.json({error});
