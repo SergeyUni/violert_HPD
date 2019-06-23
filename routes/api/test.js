@@ -19,4 +19,8 @@ testRoutes.route('/').get(function(req, res) {
         });
 });
 
+testRoutes.route('/uni').get(function(req, res) {
+    res.json({data: 'universe test'});
+})
+
 module.exports = testRoutes;
