@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
-
+var browser;
 getApplicationPage = (query) => {
     return new Promise(async (resolve, reject) => {
         try {
-            const browser = await puppeteer.launch({
-                headless: false
+            browser = await puppeteer.launch({
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
             const page = await browser.newPage();
 
@@ -28,9 +28,11 @@ getApplicationPage = (query) => {
                 })
             })
             resolve(teams);
+            browser.close()
         } catch (error) {
             reject(error);
         }
+        
     })
 }
 
