@@ -7,7 +7,8 @@ const startScraping = require('../../scrapy/hpd');
  * @access Public
  */
 hpdRoutes.route('/').get(function(req, res) {
-    console.log('req body', req.query);
+    console.log('req body', req.query, req.url);
+
     let {house, street, boro} = req.query;
     startScraping(house, street, boro)
         .then(data => {

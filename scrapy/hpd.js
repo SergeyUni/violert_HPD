@@ -1,8 +1,10 @@
 const puppeteer = require('puppeteer');
 var browser;
-getApplicationPage = (houseNum, street, boro) => {
+getHPDApplicationPage = (houseNum, street, boro) => {
+    
     return new Promise(async (resolve, reject) => {
         try {
+            
             browser = await puppeteer.launch({
                 args: ['--no-sandbox', '--disable-setuid-sandbox']
             });
@@ -20,6 +22,7 @@ getApplicationPage = (houseNum, street, boro) => {
             ]);
             resolve({status: true, page: page});
         } catch (error) {            
+            
             resolve({status:false});
         }
     })
@@ -104,23 +107,25 @@ getViolations = (page) => {
 }
 
 startScraping = (houseNum, street, boro) => {
+   
     return new Promise(async (resolve, reject) => {
         
-        const pageContext = await getApplicationPage(houseNum, street, boro)
-       
+        const pageContext = await getHPDApplicationPage(houseNum, street, boro)
+        
         if(!pageContext.status) {
             reject({status: false})
-            browser.close();
+            // browser.close();
         }
         const page1 = pageContext.page;
         const violations = await getViolations(page1);
+       
         if(!violations.status) {
             reject({status: false})
-            browser.close();
+            // browser.close();
         }
        
         const owner = await getOwnerInfo(page1);
-        browser.close()
+        
         resolve({violations, owner, status: true});    
     })
 }

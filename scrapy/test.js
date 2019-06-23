@@ -35,5 +35,5 @@ getApplicationPage = (query) => {
         
     })
 }
-
+// args: ['--no-sandbox', '--disable-setuid-sandbox']
 module.exports = getApplicationPage;
